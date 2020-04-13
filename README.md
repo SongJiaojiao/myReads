@@ -4,7 +4,7 @@ This is a bookshelf app that allows you to select and categorize books you have 
 
 ## Installation
 
-* Clone the repo: git clone https://github.com/SongJiaojiao/myReads.git
+* Clone the repo: git clone <repo>
 * Install prohect dependencies: npm install
 * Run server locally: npm start
 * Navigate to http://localhost:3000 and see the app running.
