@@ -24,7 +24,7 @@ class SearchBooks extends React.Component {
             })
             this.setState({
                 searchResults: res
-            }, () => console.log(this.state.searchResults))
+            })
         }
 
         else {

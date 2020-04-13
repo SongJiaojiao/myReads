@@ -4,7 +4,6 @@ import Booklist from './Booklist'
 
 
 const Bookshelf = props => {
-
     //separating books based on shelf name
     const subBooklist = shelfname => props.booklist.filter(book => book.shelf === shelfname)
 
