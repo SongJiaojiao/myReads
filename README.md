@@ -1,10 +1,11 @@
 # MyReads Project
 ## Description
 This is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. You can also search books by keywords and add them your bookshelf.
+<img src = "./img/bookshelf.png">
 
 ## Installation
 
-* Clone the repo: git clone <repo>
+* Clone the repo: git clone https://github.com/SongJiaojiao/myReads.git
 * Install prohect dependencies: npm install
 * Run server locally: npm start
 * Navigate to http://localhost:3000 and see the app running.
