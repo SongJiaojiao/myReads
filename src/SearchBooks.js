@@ -15,30 +15,36 @@ class SearchBooks extends React.Component{
         if (keyword){
             BooksAPI.search(keyword)
               .then(res => {
-                  if (res && res.error!=='empty query'){                      
+                  if (res && res.error!=='empty query'){  
                       const Results = res;
-                      Object.values(Results).forEach(book=>{
+                      Results.forEach(book=>{
                           if(this.props.booklist){
                               this.props.booklist.forEach(myBook=>{
-                                  if (book.id === myBook.id){
+                                  if (book.id == myBook.id){
                                       book.shelf = myBook.shelf
                                   }
-                                  else book.shelf = 'none'
+                                  else {book.shelf = 'none'}
                               })}
                       })
+
                       this.setState({
                         searchResults:Results
-                    },()=>console.log(this.state.searchResults))
- 
-                  }}
-
-                  )
+                        })
+                  }})
             .catch(error => console.log(error))
         }    
     }
 
     onChangeshelf = (newshelf,bookid) =>{
         this.props.onChangeshelf(newshelf,bookid)
+
+        let booktitle
+        Object.values(this.state.searchResults).forEach(book=>{
+            if(book.id === bookid){
+                booktitle = book.title
+            }
+        })
+        alert( `${booktitle} has been added to ${newshelf}`)
     }
 
     render(){
