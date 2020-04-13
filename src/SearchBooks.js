@@ -10,34 +10,38 @@ class SearchBooks extends React.Component{
         searchResults:[]
     }
 
-    //for some reason the compare if condition does not work, all the books will be shwon in shelf "none"
-    onSearchBooks = (keyword) =>{
-        if (keyword){
-            BooksAPI.search(keyword)
-              .then(res => {
-                  if (res && res.error!=='empty query'){  
-                      const Results = res;
-                      Results.forEach(book=>{
-                          if(this.props.booklist){
-                              this.props.booklist.forEach(myBook=>{
-                                  if (book.id === myBook.id){
-                                      book.shelf = myBook.shelf
-                                  }
-                                  else {book.shelf = 'none'}
-                              })}
-                      })
+    handleResults = (res) => {
+        if (res && res.error!=='empty query'){  
+            res.forEach(book=>{
+                book.shelf = 'none'
+                if(this.props.booklist){
+                    this.props.booklist.forEach(myBook=>{
+                        if (book.id === myBook.id){
+                            book.shelf = myBook.shelf
+                        }
+                    })}
+            })
+            this.setState({
+              searchResults:res
+              },()=>console.log(this.state.searchResults))
+        }
+        
+        else {
+           this.setState({
+              searchResults:[]
+              })
+            }        
+    }
 
-                      this.setState({
-                        searchResults:Results
-                        })
-                  }})
+    onSearchBooks = (keyword) =>{       
+        BooksAPI.search(keyword)
+            .then(res => {this.handleResults(res)})
             .catch(error => console.log(error))
-        }    
+    
     }
 
     onChangeshelf = (newshelf,bookid) =>{
         this.props.onChangeshelf(newshelf,bookid)
-
         let booktitle
         Object.values(this.state.searchResults).forEach(book=>{
             if(book.id === bookid){
