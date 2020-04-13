@@ -1,9 +1,10 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
-import {Link,Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Bookshelf from './Bookshelf'
 import SearchBooks from './SearchBooks'
+import * as BooksAPI from './BooksAPI'
+import './App.css'
+
 
 
 class BooksApp extends React.Component {
@@ -35,7 +36,7 @@ class BooksApp extends React.Component {
 
   render() {
     
-    console.log(this.state.myBooks)
+
     return (
       
       <div className="app">

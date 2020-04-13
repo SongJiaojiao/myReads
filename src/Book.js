@@ -1,6 +1,7 @@
 import React from 'react'
 import Bookshelfchanger from './Bookshelfchanger';
 
+/* Book receives a book object containing at least title, imageLinks, authors and shelf*/
 class Book extends React.Component{
   state = {
     shelf:this.props.bookinfo.shelf
@@ -21,7 +22,7 @@ class Book extends React.Component{
 
   //pass book id and new shelf 
   onChangeshelf = (newshelf) =>{
-      if (newshelf!=this.state.shelf){
+      if (newshelf!==this.state.shelf){
           this.setState({
               shelf:newshelf
           },()=>this.props.onChangeshelf(this.state.shelf,this.props.bookinfo.id))

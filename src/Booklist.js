@@ -14,7 +14,7 @@ class Booklist extends React.Component{
                     <ol className="books-grid">
                      {this.props.booklist?(
                          this.props.booklist.map(book=>
-                                            <li><Book bookinfo = {book} onChangeshelf = {this.onChangeshelf}/></li>
+                                            <li key = {book.id}><Book bookinfo = {book} onChangeshelf = {this.onChangeshelf}/></li>
                                             )
                      ):
                      ( <p>Loading...</p>)

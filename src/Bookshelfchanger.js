@@ -1,7 +1,8 @@
 import React from 'react'
 
-class Bookshelfchanger extends React.Component{
 
+/* BookshelfChanger receives a value and return a value on change*/
+class Bookshelfchanger extends React.Component{
     state = {
         shelf: this.props.shelf
     }

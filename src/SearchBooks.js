@@ -1,6 +1,6 @@
 import React from 'react'
-import Booklist from './Booklist'
 import {Link} from 'react-router-dom'
+import Booklist from './Booklist'
 import SearchBox from './SearchBox'
 import * as BooksAPI from './BooksAPI'
 
@@ -20,7 +20,7 @@ class SearchBooks extends React.Component{
                       Results.forEach(book=>{
                           if(this.props.booklist){
                               this.props.booklist.forEach(myBook=>{
-                                  if (book.id == myBook.id){
+                                  if (book.id === myBook.id){
                                       book.shelf = myBook.shelf
                                   }
                                   else {book.shelf = 'none'}

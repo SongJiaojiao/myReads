@@ -1,16 +1,19 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import Booklist from './Booklist'
-import {Link,Route} from 'react-router-dom'
 
-class Bookshelf extends React.Component{
 
-    SubBooklist = shelfname =>this.props.booklist.filter(book=>book.shelf===shelfname)
+const Bookshelf =props=>{
+
+    //separating books based on shelf name
+    const subBooklist = shelfname =>props.booklist.filter(book=>book.shelf===shelfname)
     
-    onChangeshelf = (newshelf,bookid)=>{
-        this.props.onChangeshelf(newshelf,bookid)
+    const onChangeshelf = (newshelf,bookid)=>{
+        props.onChangeshelf(newshelf,bookid)
     }
-    render(){
-        return (
+    
+    
+    return (
             <div className="list-books">
                 <div className="list-books-title">
                 <h1>MyReads</h1>
@@ -19,17 +22,17 @@ class Bookshelf extends React.Component{
                     <div>
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Currently Reading</h2>
-                            <Booklist booklist = {this.SubBooklist("currentlyReading")} onChangeshelf = {this.onChangeshelf}/>
+                            <Booklist booklist = {subBooklist("currentlyReading")} onChangeshelf = {onChangeshelf}/>
                         </div>
 
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Want to Read</h2>
-                            <Booklist booklist = {this.SubBooklist("wantToRead")} onChangeshelf = {this.onChangeshelf}/>
+                            <Booklist booklist = {subBooklist("wantToRead")} onChangeshelf = {onChangeshelf}/>
                         </div>
 
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Read</h2>
-                            <Booklist booklist = {this.SubBooklist("read")} onChangeshelf = {this.onChangeshelf}/>
+                            <Booklist booklist = {subBooklist("read")} onChangeshelf = {onChangeshelf}/>
                         </div>
 
                     </div>
@@ -42,7 +45,7 @@ class Bookshelf extends React.Component{
 
             
         )
-        }
+        
 
 }
 
